@@ -6,22 +6,22 @@
 #fi
 
 #update
-yum update
+yum -y update
 
 #dependencies
-yum install epel-release libpcap-devel openssl-dev python-devel cmake gcc-c++ gcc swig bison flex zlib-devel perl pcre libdnet libdnet-devel glib2-devel perl-CPAN subversion git
+yum -y install epel-release libpcap-devel openssl-dev python-devel cmake gcc-c++ gcc swig bison flex zlib-devel perl pcre libdnet libdnet-devel glib2-devel perl-CPAN subversion git
 
 #nettools
-yum install net-tools
+yum -y install net-tools
 
 #gperftools
-yum install gperftools
+yum -y install gperftools
 
 #tcpdump
-yum install tcpdump
+yum -y install tcpdump
 
 #curl
-yum install curl
+yum -y install curl
 
 #GeoLite
 cd /tmp
@@ -43,9 +43,9 @@ cd /
 #sudo cpan -i Archive::Tar
 
 #snort
-yum install https://www.snort.org/downloads/snort/daq-2.0.6-1.centos7.x86_64.rpm
+yum -y install https://www.snort.org/downloads/snort/daq-2.0.6-1.centos7.x86_64.rpm
                       
-yum install https://www.snort.org/downloads/snort/snort-2.9.9.0-1.centos7.x86_64.rpm
+yum -y install https://www.snort.org/downloads/snort/snort-2.9.9.0-1.centos7.x86_64.rpm
 
 chmod -R 5775 /etc/snort
 chmod -R 5775 /var/log/snort
@@ -60,7 +60,7 @@ sudo git clone git://github.com/shirkdog/pulledpork
 cd /
 
 ## Bro
-yum install bro
+yum -y install bro
 
 #SiLK
 cd /tmp

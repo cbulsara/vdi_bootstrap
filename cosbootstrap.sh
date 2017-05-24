@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #check root
-if [ 'whoami' != 'root' ]; then
-echo "Need to run as root, or with sudo"; exit
-fi
+#if [ 'whoami' != 'root' ]; then
+#echo "Need to run as root, or with sudo"; exit
+#fi
 
 #update
 yum update

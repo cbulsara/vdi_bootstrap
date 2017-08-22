@@ -9,9 +9,15 @@
 yum -y update
 
 #dependencies
-yum -y install epel-release libpcap-devel openssl-dev python-devel cmake gcc-c++ gcc swig bison flex zlib-devel perl pcre libdnet libdnet-devel glib2-devel perl-CPAN subversion git
+yum -y install epel-release libpcap-devel openssl-devel python-devel cmake gcc-c++ gcc swig bison flex zlib-devel perl pcre libdnet libdnet-devel glib2-devel perl-CPAN subversion git p7zip
 
-#nettools
+#dockersudo 
+yum -y install docker
+
+#ufw
+yum -y install ufw
+
+#nettoolssu
 yum -y install net-tools
 
 #gperftools
@@ -22,6 +28,10 @@ yum -y install tcpdump
 
 #curl
 yum -y install curl
+
+#recordmydesktop
+yum -y install recordmydesktop
+yum -y install gtk-recordmydesktop
 
 #GeoLite
 cd /tmp
@@ -53,10 +63,15 @@ chmod -R 5775 /var/log/snort
 
 touch /etc/snort/rules/white_list.rules
 touch /etc/snort/rules/black_list.rules
+#conf edits
+sed -i 's|\(^dynamicpreprocessor directory \).*|\1/usr/lib64/snort-2.9.9.0_dynamicpreprocessor/|' /etc/snort/snort.conf
+sed -i 's|\(^dynamicengine \).*|\1/usr/lib64/snort-2.9.9.0_dynamicengine/libsf_engine.so|' /etc/snort/snort.conf
+sed -i 's|\(^dynamicdetection directory \).*|\1/usr/lib64/snort-2.9.9.0_dynamicrules|' /etc/snort/snort.conf
+
 
 ##pulledpork
 cd /sbin
-sudo git clone git://github.com/shirkdog/pulledpork
+git clone git://github.com/shirkdog/pulledpork
 cd /
 
 ## Bro
@@ -69,3 +84,36 @@ rpm -Uvh cert-forensics-tools-release*rpm
 sudo yum --enablerepo=forensics install silk-analysis
 sudo yum --enablerepo=forensics install silk-flowcap
 cd /
+
+#pip
+cd /tmp
+wget https://boostrap.pypa.io/get-pip.pyp
+python get-pip.py
+
+#didier stevens
+cd /opt
+wget http://didierstevens.com/files/software/DidierStevensSuite.zip
+unzip DidierStevensSuite.zip
+sudo chmod -R ugo+rwx DidierStevensSuite
+cd /
+pip install olefile
+
+
+#xfce
+yum groupinstall "Server with GUI" -y
+yum groupinstall "Xfce" -y
+systemctl set-default graphical.target
+
+#wireshark
+yum install -y wireshark
+yum install -y wireshark
+
+#scapy and dependencies
+pip install scapy
+pip install matplotlib
+pip install Pyx 
+pip install Crypto
+pip install ecdsa
+
+#yaf
+yum install -y yaf

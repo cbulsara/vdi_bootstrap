@@ -9,7 +9,7 @@
 apt-get update && apt-get upgrade -y
 
 #dependencies
-apt-get install -y libpcap-devel openssl-devel python-devel cmake gcc-c++ gcc swig bison flex zlib-devel perl pcre libdnet libdnet-devel glib2-devel perl-CPAN subversion git p7zip
+apt-get install -y libpcap-devel openssl-devel python-devel cmake gcc-c++ gcc swig bison flex zlib-devel perl pcre libdnet libdnet-devel glib2-devel perl-CPAN subversion git p7zip r-base
 
 #dockersudo 
 apt-get install -y docker
@@ -52,7 +52,7 @@ cd /
 #sudo cpan -i Archive::Tar
 
 #snort
-apt-get install snort
+apt-get install  -y snort
 
 ##pulledpork
 cd /sbin
